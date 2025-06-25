@@ -11,7 +11,7 @@ export default function HomePage() {
                 throw new Error(`Errore nel fetch delle destinazioni: ${res.status} ${res.statusText}`)
             }
             const data = await res.json()
-            //console.log("Dati ricevuti:", data);
+            console.log("Dati ricevuti:", data);
             setDestinations(data)
 
         } catch (error) {
@@ -28,20 +28,28 @@ export default function HomePage() {
         <div>
 
             <NavBar />
+            <div className="container-dests">
             {
                 destinations && destinations.map((d) => (
-                    <div key={d.id}>
-                        <h3>{d.title}</h3>
-                        <img src={d.img} alt={d.title} />
+
+                    <div  className="container-single-dest" key={d.id}>
+                        
+                        <h3 className="dest-title" >{d.title}</h3>
+                        <img  className="img-dest" src={d.img}alt={d.title} />
                         <div className="info-wrapper">
-                            <span>{d.category}</span>
-                            <span>{d.climate}</span>
-                            <span>{d.averageCost}€</span>
+                            <span className="span-dest" >{d.category}</span>
+                            <span className="span-dest" >{d.climate}</span>
+                            <span className="span-dest" >{d.averageCost}€</span>
 
                         </div>
                     </div>
-                ))
-            }
+
+
+
+
+))
+}
+</div>
         </div>
 
 
