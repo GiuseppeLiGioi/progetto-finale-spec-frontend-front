@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function HomePage() {
     const [destinations, setDestinations] = useState([])
+    const [searchQuery, setSearchQuery] = useState("")
 
     async function fetchDestinations() {
         try {
@@ -24,13 +25,19 @@ export default function HomePage() {
         fetchDestinations()
     }, [])
 
+    
+    const filteredDestinations = destinations.filter((d) => {
+        return d.title.toLowerCase().includes(searchQuery.trim().toLowerCase())
+    })
+    
+
     return (
         <div>
 
-            <NavBar />
+            <NavBar searchQuery={searchQuery}  setSearchQuery={setSearchQuery}/>
             <div className="container-dests">
             {
-                destinations && destinations.map((d) => (
+                filteredDestinations && filteredDestinations.map((d) => (
 
                     <div  className="container-single-dest" key={d.id}>
                         
@@ -38,9 +45,6 @@ export default function HomePage() {
                         <img  className="img-dest" src={d.img}alt={d.title} />
                         <div className="info-wrapper">
                             <span className="span-dest" >{d.category}</span>
-                            <span className="span-dest" >{d.climate}</span>
-                            <span className="span-dest" >{d.averageCost}€</span>
-
                         </div>
                     </div>
 
