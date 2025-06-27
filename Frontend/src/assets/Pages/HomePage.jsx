@@ -1,5 +1,6 @@
 import NavBar from "../Components/NavBar";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
     const [destinations, setDestinations] = useState([])
@@ -33,15 +34,15 @@ export default function HomePage() {
         .filter((d) => {
             return d.title.toLowerCase().includes(searchQuery.trim().toLowerCase()) &&
                 (categoryFilter === "" || d.category.toLowerCase().includes(categoryFilter.trim().toLowerCase()))
-                }) 
-        .sort((a,b) => {
-            if(order === "Crescente"){
+        })
+        .sort((a, b) => {
+            if (order === "Crescente") {
                 return a.title.localeCompare(b.title)
-            }else if(order === "Decrescente"){
+            } else if (order === "Decrescente") {
                 return b.title.localeCompare(a.title)
             }
             return 0
-               
+
         })
 
 
@@ -76,20 +77,14 @@ export default function HomePage() {
             </div>
             <div className="container-dests">
                 {
-                    filteredDestinations && filteredDestinations.map((d) => (
-
-                        <div className="container-single-dest" key={d.id}>
-
-                            <h3 className="dest-title" >{d.title}</h3>
+                    filteredDestinations.map((d) => (
+                        <Link to={`/destination/${d.id}`} className="container-single-dest" key={d.id}>
+                            <h3 className="dest-title">{d.title}</h3>
                             <img className="img-dest" src={d.img} alt={d.title} />
                             <div className="info-wrapper">
-                                <span className="span-dest" >{d.category}</span>
+                                <span className="span-dest">{d.category}</span>
                             </div>
-                        </div>
-
-
-
-
+                        </Link>
                     ))
                 }
             </div>
