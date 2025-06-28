@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function DestinationPage() {
+export default function DestinationPage({selectedIds, toggleSelect}) {
     const {id} = useParams();
     const [destination, setDestination] = useState("")
     
@@ -33,6 +33,8 @@ export default function DestinationPage() {
   if (!destination) {
     return <p>Caricamento in corso...</p>; 
   }
+
+  const isSelected = selectedIds.includes(destination.id);
   
 
     return (
@@ -50,7 +52,7 @@ export default function DestinationPage() {
         
         </div>
         <div className="btn-wrapper">
-         <Link to="/compare" className="btn">Aggiungi al Comparatore</Link>
+         <button onClick={() => toggleSelect(destination.id)} className={isSelected ? "btn btn-click" : "btn"}>{selectedIds.includes(destination.id) ? "Rimuovi" : "Aggiungi al Comparatore"}</button>
          <Link to="/" className="btn">Torna alla Home</Link>
         </div>
         </div>
