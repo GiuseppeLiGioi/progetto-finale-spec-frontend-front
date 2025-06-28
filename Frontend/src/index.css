@@ -47,7 +47,7 @@ body {
 }
 
 .container-single-dest {
-  height: 400px;
+  height: 450px;
   border: 2px solid black;
   background-color: #fef6e4;
 
@@ -62,12 +62,7 @@ body {
 }
 
 
-.info-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-}
+
 
 .img-dest {
   width: 100%;
@@ -75,14 +70,7 @@ body {
   object-fit: cover;
 }
 
-.dest-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #2a2a3f;
-  margin: 10px 0;
-  text-align: center;
-  text-transform: capitalize;
-}
+
 
 
 
@@ -91,13 +79,17 @@ body {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 2rem;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: capitalize;
   color: #2a2a3f;
 }
 
-.span-dest {
+.p-dest {
   background-color: rgba(0, 0, 0, 0.05);
   font-family: 'Playfair Display', serif;
   padding: 5px 10px;
+  text-align: center;
   border-radius: 8px;
   font-size: 0.9rem;
   color: #333;
@@ -138,8 +130,9 @@ body {
 }
 
 .destination-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3.0rem;
+  font-family: 'Poppins', sans-serif;
+  
   color: #2c3e50;
 }
 
@@ -152,29 +145,82 @@ body {
 }
 
 .destination-semi-title {
+   text-align: center;
   font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: #1e3a8a; /* Blu scuro */
+  margin: 1rem 0;
 }
 
 .single-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  gap: 10px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
+
 .destination-p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0; 
   font-size: 1rem;
   color: rgba(220, 20, 60, 0.8);
   margin: 0;
   
 }
 
-.destination-span {
-  margin-top: 0.5rem;
-  color: #2c3e50;
+
+.destination-span { 
+   font-family: 'Poppins', sans-serif;
   font-weight: 500;
+  color: #333;
+}
+.btn-wrapper{
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px;
+  margin-top: 50px;
+  background-color:#007bff; 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-home{
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(100, 170, 200, 1);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+background-color: rgba(10, 40, 90, 0.8);
+}
+.btn-click{
+background-color: rgba(100, 170, 200, 0.5); 
+opacity: 0.6;
 }
 
 

@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function DestinationPage() {
     const {id} = useParams();
     const [destination, setDestination] = useState("")
+    
 
 
     useEffect(() => {
@@ -31,18 +33,26 @@ export default function DestinationPage() {
   if (!destination) {
     return <p>Caricamento in corso...</p>; 
   }
+  
 
     return (
         <div className="destination-wrapper">
-        <h2 className="destination-title">{destination.title}</h2>
+        <h1 className="destination-title">{destination.title}</h1>
         <img className="destination-img" src={destination.img} alt={destination.title} />
-        <h5 className="destination-semi-title">Categoria: {destination.category}</h5>
+        <h4 className="destination-semi-title">Categoria: {destination.category}</h4>
         <div className="single-wrapper">
-
-        <p className="destination-p">Attività consigliate: <span className="destination-span">{destination.activities}</span></p> <span className="destination-span">Stagione Consigliata: {destination.recommendedSeason}</span>
-        <p className="destination-p">Lingua Parlata: {destination.language} <span className="destination-span">Paese: {destination.country}</span></p>
+        <p className="destination-p"><strong>Paese:</strong> <span className="destination-span">{destination.country}</span></p>
+        <p className="destination-p"><strong>Lingua Parlata:</strong> <span className="destination-span">{destination.language}</span></p>
+        <p className="destination-p"><strong>Attività consigliate:</strong> <span className="destination-span">{destination.activities.join(", ")}</span></p>
+        <p className="destination-p"><strong>Stagione consigliata:</strong> <span className="destination-span">{destination.recommendedSeason}</span></p>
+        <p className="destination-p"><strong>Clima :</strong> <span className="destination-span">{destination.climate}</span></p>
+        <p className="destination-p"><strong>Prezzo Medio :</strong> <span className="destination-span">{`${destination.averageCost}€`}</span></p> 
+        
         </div>
-
+        <div className="btn-wrapper">
+         <Link to="/compare" className="btn">Aggiungi al Comparatore</Link>
+         <Link to="/" className="btn">Torna alla Home</Link>
+        </div>
         </div>
     )
 }

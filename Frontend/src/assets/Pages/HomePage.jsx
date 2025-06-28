@@ -7,6 +7,17 @@ export default function HomePage() {
     const [searchQuery, setSearchQuery] = useState("")
     const [categoryFilter, setCategoryFilter] = useState("")
     const [order, setOrder] = useState("")
+    const [selectedIds, setSelectedIds] = useState([]);
+
+
+    function toggleSelect(id) {
+        if (selectedIds.includes(id)) {
+            setSelectedIds(selectedIds.filter(selectedId => selectedId !== id));
+        } else {
+            setSelectedIds([...selectedIds, id]);
+        }
+    }
+
 
     async function fetchDestinations() {
         try {
@@ -76,19 +87,31 @@ export default function HomePage() {
                 </select>
             </div>
             <div className="container-dests">
-                {
-                    filteredDestinations.map((d) => (
-                        <Link to={`/destination/${d.id}`} className="container-single-dest" key={d.id}>
+                {filteredDestinations.map(d => {
+                    const isSelected = selectedIds.includes(d.id);
+
+                    return (
+                        <div className="container-single-dest" key={d.id}>
+
+                        <Link to={`/destination/${d.id}`}>
                             <h3 className="dest-title">{d.title}</h3>
+                            <p className="p-dest">{d.category}</p>
                             <img className="img-dest" src={d.img} alt={d.title} />
-                            <div className="info-wrapper">
-                                <span className="span-dest">{d.category}</span>
-                            </div>
                         </Link>
-                    ))
-                }
+                            <button
+                                className={isSelected ? "btn-home btn-click" : "btn-home"}
+                                onClick={() => {
+                                    toggleSelect(d.id);
+                                }}
+                            >
+                                {selectedIds.includes(d.id) ? "Rimuovi" : "Aggiungi al Comparatore"}
+                            </button>
+                        </div>
+                    )
+                })}
             </div>
-        </div>
+
+        </div >
 
 
     )
