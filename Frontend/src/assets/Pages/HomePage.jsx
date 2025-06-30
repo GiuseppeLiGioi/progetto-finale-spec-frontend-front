@@ -1,8 +1,9 @@
+
 import NavBar from "../Components/NavBar";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function HomePage({toggleSelect, selectedIds}) {
+export default function HomePage({toggleSelect, selectedIds, toggleFavorite, favoriteIds}) {
     const [destinations, setDestinations] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const [categoryFilter, setCategoryFilter] = useState("")
@@ -92,6 +93,8 @@ export default function HomePage({toggleSelect, selectedIds}) {
                             <p className="p-dest">{d.category}</p>
                             <img className="img-dest" src={d.img} alt={d.title} />
                         </Link>
+                        <div className="btn-wrapper">
+
                             <button
                                 className={isSelected ? "btn-home btn-click" : "btn-home"}
                                 onClick={() => {
@@ -100,6 +103,9 @@ export default function HomePage({toggleSelect, selectedIds}) {
                             >
                                 {selectedIds.includes(d.id) ? "Rimuovi" : "Aggiungi al Comparatore"}
                             </button>
+                        
+                            <button className="btn-home" onClick={() => toggleFavorite(d.id)}>{favoriteIds.includes(d.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}</button>
+                        </div>
                         </div>
                     )
                 })}

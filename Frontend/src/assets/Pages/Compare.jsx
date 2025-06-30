@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 export default function Compare({ selectedIds, toggleSelect }) {
-    const [selectedDestinations, setSelectedDestinations] = useState([])
+const [selectedDestinations, setSelectedDestinations] = useState([])
 
 
     useEffect(() => {

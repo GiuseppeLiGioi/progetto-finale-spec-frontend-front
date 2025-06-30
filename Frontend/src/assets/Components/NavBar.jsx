@@ -1,8 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
+
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 
-export default function NavBar({searchQuery, setSearchQuery}) {
+export default function NavBar({ searchQuery, setSearchQuery }) {
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -10,9 +13,13 @@ export default function NavBar({searchQuery, setSearchQuery}) {
         <Link className="navbar-link" to="/compare">Comparatore</Link>
       </div>
       <div>
-        {<SearchBar 
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
+        <Link to="/favorites">
+          <FontAwesomeIcon icon={solidStar} className='star-icon'/>
+        </Link>
+
+        {<SearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
         />}
       </div>
     </nav>
