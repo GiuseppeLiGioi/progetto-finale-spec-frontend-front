@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-export default function Compare({ selectedIds }) {
+export default function Compare({ selectedIds, toggleSelect }) {
     const [selectedDestinations, setSelectedDestinations] = useState([])
 
 
@@ -25,8 +25,9 @@ export default function Compare({ selectedIds }) {
     if(selectedDestinations.length === 0){
         return <p>Nessuna Destinazione Selezionata</p>
     }
+
     return (
-        
+       
         <div className="compare-wrapper">
 
             {
@@ -45,10 +46,13 @@ export default function Compare({ selectedIds }) {
                             <p className="destination-p"><strong>Prezzo Medio :</strong> <span className="destination-span">{`${s.averageCost}€`}</span></p>
 
                         </div>
+                        <button onClick={() => toggleSelect(s.id)} className= "btn btn-click">Rimuovi Dal Comparatore</button>
                     </div>
                 ))
             }
 
         </div>
+        
+        
     )
 }

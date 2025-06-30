@@ -21,7 +21,7 @@ function App() {
    <Routes>
     <Route path="/" element={<HomePage toggleSelect={toggleSelect} selectedIds={selectedIds}/>} />
     <Route path="/destination/:id" element={<DestinationPage  selectedIds={selectedIds} toggleSelect={toggleSelect} />} />
-    <Route path="/compare" element={<Compare  selectedIds={selectedIds}/>} />
+    <Route path="/compare" element={<Compare  selectedIds={selectedIds} toggleSelect={toggleSelect}/>} />
     <Route path="/*" element={<NotFound />} />
    </Routes>
    </BrowserRouter>
