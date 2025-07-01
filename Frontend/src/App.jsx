@@ -5,6 +5,7 @@ import DestinationPage from "./assets/Pages/DestinationPage";
 import Compare from "./assets/Pages/Compare";
 import NotFound from "./assets/Pages/NotFound"
 import Favorites from "./assets/Pages/Favorites";
+import NavBar from "./assets/Components/NavBar";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 
   return (
    <BrowserRouter>
+   <NavBar favoriteIds={favoriteIds}/>
    <Routes>
     <Route path="/" element={<HomePage toggleSelect={toggleSelect} selectedIds={selectedIds} favoriteIds={favoriteIds} toggleFavorite={toggleFavorite}/>} />
     <Route path="/destination/:id" element={<DestinationPage  selectedIds={selectedIds} toggleSelect={toggleSelect} favoriteIds={favoriteIds} toggleFavorite={toggleFavorite}/>} />

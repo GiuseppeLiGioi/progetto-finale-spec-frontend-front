@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function DestinationPage({selectedIds, toggleSelect}) {
+export default function DestinationPage({selectedIds, toggleSelect, favoriteIds, toggleFavorite}) {
     const {id} = useParams();
     const [destination, setDestination] = useState("")
     
@@ -54,6 +54,7 @@ export default function DestinationPage({selectedIds, toggleSelect}) {
         <div className="btn-wrapper">
          <button onClick={() => toggleSelect(destination.id)} className={isSelected ? "btn btn-click" : "btn"}>{selectedIds.includes(destination.id) ? "Rimuovi" : "Aggiungi al Comparatore"}</button>
          <Link to="/" className="btn">Torna alla Home</Link>
+         <button className={`btn ${favoriteIds.includes(destination.id) ? 'btn-click' : ''}`}  onClick={() => toggleFavorite(destination.id)}>{favoriteIds.includes(destination.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}</button>
         </div>
         </div>
     )

@@ -213,6 +213,7 @@ a {
   cursor: pointer;
   font-weight: bold;
   
+  
 }
 
 .btn:hover {
@@ -292,15 +293,15 @@ opacity: 0.6;
 }
 
 .favorites-wrapper {
-  width: 100vw;
-  padding: 0 10px;       
+  width: 98vw;
+  padding: 0 10px; 
+  margin: 0 auto;      
   box-sizing: border-box;
-  background: #f9f9f9;
+  background-color: rgba(208, 240, 246, 1);
 }
 
 .single-dest-fav {
-  background: #fff;
-  width: 100%;           
+  background-color: #fef6e4;          
   max-width: none;       
   margin: 10px 0;        
   padding: 10px 15px;
@@ -319,7 +320,7 @@ opacity: 0.6;
 }
 
 .fav-img {
-  width: 100px;         
+  width: 200px;         
   height: 100px;
   object-fit: cover;
   border-radius: 6px;
@@ -327,24 +328,26 @@ opacity: 0.6;
 }
 
 .fav-title {
-  flex: 1;                
-  text-align: center;
+  max-width: 60%;             
   font-family: 'Arial Black', Arial, sans-serif;
   font-size: 1.6rem;
-  margin: 0 10px;       
+  margin-left: 60px;      
+  color: rgba(150, 40, 40, 0.8);      
   user-select: none;
   white-space: nowrap;   
   overflow: hidden;
   text-overflow: ellipsis; 
+  flex-grow: 1;         
 }
 
 .fav-right-info {
-  width: 150px;           
+  width: 220px;           
   display: flex;
-  gap: 50px;
+  gap: 30px;
   align-items: center;
   justify-content: flex-end;
   flex-shrink: 0;
+  white-space: nowrap;      
 }
 
 .fav-category, .fav-price {
@@ -352,12 +355,15 @@ opacity: 0.6;
   font-size: 1.2rem;
   color: #333;
   user-select: none;
+
 }
 
 .fav-details {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
 }
 
 .fav-p {
@@ -378,20 +384,23 @@ opacity: 0.6;
 .btn-fav {
   margin: 15px auto 0 auto;
   padding: 8px 18px;
-  background-color: #007bff;
+  background-color: red;
   border: none;
   border-radius: 5px;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  margin-left: 100px;
+  margin-bottom: 10px;
   width: fit-content;
   user-select: none;
   transition: background-color 0.3s ease;
 }
 
 .btn-fav:hover {
-  background-color: #0056b3;
+  background-color: rgba(150, 40, 40, 0.8);
 }
+
 
 .btn-wrapper{
   display: flex;
@@ -399,6 +408,35 @@ opacity: 0.6;
   align-items: center;
   gap: 30px;
 }
+
+.favorites-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.star-icon {
+  color: gold;
+}
+
+.favorites-counter {
+  position: absolute;
+  top: -6px;
+  right: 8px;
+  background-color: rgba(150, 40, 40, 0.85); 
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+.wrapper-btn-home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
 
 
 

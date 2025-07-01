@@ -55,7 +55,7 @@ export default function HomePage({toggleSelect, selectedIds, toggleFavorite, fav
     return (
         <div>
 
-            <NavBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            
             <div className="select-wrapper">
 
                 <select

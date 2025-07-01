@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 export default function Favorites({ favoriteIds, toggleFavorite }) {
 
     const [favoriteDestinations, setFavoriteDestinations] = useState([]);
@@ -43,6 +44,7 @@ export default function Favorites({ favoriteIds, toggleFavorite }) {
 
 
     return (
+        
         <div className="favorites-wrapper">
 
             {
@@ -58,6 +60,9 @@ export default function Favorites({ favoriteIds, toggleFavorite }) {
                                     <span className="fav-category">{f.category.toUpperCase()}</span>
                                     <span className="fav-price">{`${f.averageCost}€`}</span>
                                 </div>
+                                <button onClick={() => toggleFavorite(f.id)} className="btn-fav">
+                                    Rimuovi
+                                </button>
                             </div>
 
                             {isOpen && (
@@ -70,13 +75,14 @@ export default function Favorites({ favoriteIds, toggleFavorite }) {
                                 </div>
                             )}
 
-                            <button onClick={() => toggleFavorite(f.id)} className="btn-fav">
-                                Rimuovi Dai Preferiti
-                            </button>
                         </div>
                     );
                 })
             }
+           <div className="wrapper-btn-home">
+
+            <Link to="/" className="btn-home">Torna alla Home</Link>
+           </div>
 
         </div>
     )

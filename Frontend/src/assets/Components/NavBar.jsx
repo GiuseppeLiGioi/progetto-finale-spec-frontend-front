@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 
-export default function NavBar({ searchQuery, setSearchQuery }) {
+export default function NavBar({ searchQuery, setSearchQuery, favoriteIds }) {
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -13,9 +13,14 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
         <Link className="navbar-link" to="/compare">Comparatore</Link>
       </div>
       <div>
-        <Link to="/favorites">
-          <FontAwesomeIcon icon={solidStar} className='star-icon'/>
-        </Link>
+        <div className="favorites-icon-wrapper">
+          <Link to="/favorites">
+            <FontAwesomeIcon icon={solidStar} className="star-icon" />
+            {favoriteIds.length > 0 && (
+              <span className="favorites-counter">{favoriteIds.length}</span>
+            )}
+          </Link>
+        </div>
 
         {<SearchBar
           searchQuery={searchQuery}
