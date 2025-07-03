@@ -1,11 +1,9 @@
 
-import NavBar from "../Components/NavBar";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function HomePage({toggleSelect, selectedIds, toggleFavorite, favoriteIds}) {
+export default function HomePage({toggleSelect, selectedIds, toggleFavorite, favoriteIds, searchQuery}) {
     const [destinations, setDestinations] = useState([])
-    const [searchQuery, setSearchQuery] = useState("")
     const [categoryFilter, setCategoryFilter] = useState("")
     const [order, setOrder] = useState("")
     
