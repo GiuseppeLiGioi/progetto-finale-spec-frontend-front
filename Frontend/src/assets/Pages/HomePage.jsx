@@ -2,37 +2,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function HomePage({toggleSelect, selectedIds, toggleFavorite, favoriteIds, searchQuery}) {
-    const [destinations, setDestinations] = useState([])
+export default function HomePage({toggleSelect, selectedIds, toggleFavorite, favoriteIds, searchQuery, destinations}) {
     const [categoryFilter, setCategoryFilter] = useState("")
     const [order, setOrder] = useState("")
     
-
-
-   
-
-
-    async function fetchDestinations() {
-        try {
-            const res = await fetch('http://localhost:3001/destinations')
-            if (!res.ok) {
-                throw new Error(`Errore nel fetch delle destinazioni: ${res.status} ${res.statusText}`)
-            }
-            const data = await res.json()
-            console.log("Dati ricevuti:", data);
-            setDestinations(data)
-
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-
-    useEffect(() => {
-        fetchDestinations()
-    }, [])
-
-
 
     const filteredDestinations = destinations
         .filter((d) => {

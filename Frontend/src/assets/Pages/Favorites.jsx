@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-export default function Favorites({ favoriteIds, toggleFavorite }) {
+export default function Favorites({ favoriteIds, toggleFavorite, destinations }) {
 
     const [favoriteDestinations, setFavoriteDestinations] = useState([]);
 
@@ -15,24 +15,12 @@ export default function Favorites({ favoriteIds, toggleFavorite }) {
     }
 
 
-    useEffect(() => {
-        async function fetchFavoriteDestinations() {
-            try {
-                const res = await fetch('http://localhost:3001/destinations')
-                if (!res.ok) {
-                    throw new Error(`Errore nel fetch delle destinazioni: ${res.status} ${res.statusText}`)
-                }
-                const data = await res.json()
-                //console.log("Dati ricevuti:", data);
-                setFavoriteDestinations(data.filter((d) => favoriteIds.includes(d.id)))
-
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        fetchFavoriteDestinations()
-
-    }, [favoriteIds])
+  useEffect(() => {
+    if (destinations.length > 0) {
+      const filtered = destinations.filter(d => favoriteIds.includes(d.id));
+      setFavoriteDestinations(filtered);
+    }
+  }, [favoriteIds, destinations]);
 
 
 

@@ -1,26 +1,14 @@
 import { useState, useEffect } from "react"
-export default function Compare({ selectedIds, toggleSelect }) {
+export default function Compare({ selectedIds, toggleSelect, destinations }) {
 const [selectedDestinations, setSelectedDestinations] = useState([])
 
 
-    useEffect(() => {
-        async function fetchSelectedDestinations() {
-            try {
-                const res = await fetch('http://localhost:3001/destinations')
-                if (!res.ok) {
-                    throw new Error(`Errore nel fetch della destinazione: ${res.status} ${res.statusText}`)
-                }
-                const data = await res.json()
-                //console.log("Dati ricevuti:", data);
-                setSelectedDestinations(data.filter((d) => selectedIds.includes(d.id)))
-
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        fetchSelectedDestinations()
-        
-    }, [selectedIds])
+  useEffect(() => {
+    if (destinations.length > 0) {
+      const filtered = destinations.filter(d => selectedIds.includes(d.id));
+      setSelectedDestinations(filtered);
+    }
+  }, [selectedIds, destinations]);
 
     if(selectedDestinations.length === 0){
         return <p>Nessuna Destinazione Selezionata</p>

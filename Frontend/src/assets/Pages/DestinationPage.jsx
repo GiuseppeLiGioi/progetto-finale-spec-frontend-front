@@ -3,30 +3,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function DestinationPage({selectedIds, toggleSelect, favoriteIds, toggleFavorite}) {
+export default function DestinationPage({destinations, selectedIds, toggleSelect, favoriteIds, toggleFavorite}) {
     const {id} = useParams();
     const [destination, setDestination] = useState("")
     
 
 
-    useEffect(() => {
-      async function fetchDestination() {
-        try {
-            const res = await fetch('http://localhost:3001/destinations')
-            if (!res.ok) {
-                throw new Error(`Errore nel fetch della destinazione: ${res.status} ${res.statusText}`)
-            }
-            const data = await res.json()
-            //console.log("Dati ricevuti:", data);
-            const singleDestination = data.find((d) => d.id.toString() === id) //messo toString pk lo useParams interpreta l'id come stringa... se no dovevo mettere il Number(id) all'id dello useParams
-            setDestination(singleDestination)
-
-        } catch (error) {
-            console.error(error)
-        }
+     useEffect(() => {
+    if (destinations.length > 0) {
+      const singleDestination = destinations.find(d => d.id.toString() === id);
+      setDestination(singleDestination);
     }
-    fetchDestination()
-    }, [id])
+  }, [id, destinations]);
    
 
     
