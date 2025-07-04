@@ -58,12 +58,11 @@ export default function HomePage({toggleSelect, selectedIds, toggleFavorite, fav
 
                     return (
                         <div className="container-single-dest" key={d.id}>
+                            <Link to={`/destination/${d.id}`}  >
 
-                        <Link to={`/destination/${d.id}`}>
                             <h3 className="dest-title">{d.title}</h3>
                             <p className="p-dest">{d.category}</p>
-                            <img className="img-dest" src={d.img} alt={d.title} />
-                        </Link>
+                            </Link>
                         <div className="btn-wrapper">
 
                             <button
@@ -71,11 +70,11 @@ export default function HomePage({toggleSelect, selectedIds, toggleFavorite, fav
                                 onClick={() => {
                                     toggleSelect(d.id);
                                 }}
-                            >
+                                >
                                 {selectedIds.includes(d.id) ? "Rimuovi" : "Aggiungi al Comparatore"}
                             </button>
                         
-                            <button className="btn-home" onClick={() => toggleFavorite(d.id)}>{favoriteIds.includes(d.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}</button>
+                            <button className={favoriteIds.includes(d.id) ? "btn-home btn-click" : "btn-home"} onClick={() => toggleFavorite(d.id)}>{favoriteIds.includes(d.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}</button>
                         </div>
                         </div>
                     )

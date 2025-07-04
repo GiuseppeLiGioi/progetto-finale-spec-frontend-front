@@ -3,15 +3,31 @@ export default function Compare({ selectedIds, toggleSelect, destinations }) {
 const [selectedDestinations, setSelectedDestinations] = useState([])
 
 
-  useEffect(() => {
-    if (destinations.length > 0) {
-      const filtered = destinations.filter(d => selectedIds.includes(d.id));
-      setSelectedDestinations(filtered);
+   useEffect(() => {
+    async function fetchSelected() {
+      try {
+        const data = await Promise.all(
+          selectedIds.map(id =>
+            fetch(`http://localhost:3001/destinations/${id}`)
+              .then(res => res.json())
+              .then(data => data.destination) 
+          )
+        );
+        setSelectedDestinations(data);
+      } catch (error) {
+        console.error("Errore nel fetch delle destinazioni selezionate:", error);
+      }
     }
-  }, [selectedIds, destinations]);
+
+    if (selectedIds.length > 0) {
+      fetchSelected();
+    } else {
+      setSelectedDestinations([]); 
+    }
+  }, [selectedIds]);
 
     if(selectedDestinations.length === 0){
-        return <p>Nessuna Destinazione Selezionata</p>
+        return <p className="info-error">Nessuna Destinazione Aggiunta al Comparatore!"</p>
     }
 
     return (

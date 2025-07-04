@@ -3,23 +3,30 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function DestinationPage({destinations, selectedIds, toggleSelect, favoriteIds, toggleFavorite}) {
+export default function DestinationPage({ selectedIds, toggleSelect, favoriteIds, toggleFavorite}) {
     const {id} = useParams();
     const [destination, setDestination] = useState("")
     
 
 
-     useEffect(() => {
-    if (destinations.length > 0) {
-      const singleDestination = destinations.find(d => d.id.toString() === id);
-      setDestination(singleDestination);
+   useEffect(() => {
+    async function fetchDestination() {
+      try {
+        const res = await fetch(`http://localhost:3001/destinations/${id}`);
+        if (!res.ok) throw new Error("Errore nel fetch");
+        const data = await res.json();
+        setDestination(data.destination); 
+      } catch (error) {
+        console.error("Errore nel caricamento della destinazione:", error);
+      }
     }
-  }, [id, destinations]);
+    fetchDestination();
+  }, [id]);
    
 
     
   if (!destination) {
-    return <p>Caricamento in corso...</p>; 
+    return <p className="info-error">Caricamento in Corso..."</p>
   }
 
   const isSelected = selectedIds.includes(destination.id);
@@ -40,9 +47,22 @@ export default function DestinationPage({destinations, selectedIds, toggleSelect
         
         </div>
         <div className="btn-wrapper">
-         <button onClick={() => toggleSelect(destination.id)} className={isSelected ? "btn btn-click" : "btn"}>{selectedIds.includes(destination.id) ? "Rimuovi" : "Aggiungi al Comparatore"}</button>
-         <Link to="/" className="btn">Torna alla Home</Link>
-         <button className={`btn ${favoriteIds.includes(destination.id) ? 'btn-click' : ''}`}  onClick={() => toggleFavorite(destination.id)}>{favoriteIds.includes(destination.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}</button>
+<button
+  onClick={() => toggleSelect(destination.id)}
+  className={selectedIds.includes(destination.id) ? "btn-click" : "btn-btn"}
+>
+  {selectedIds.includes(destination.id) ? "Rimuovi" : "Aggiungi al Comparatore"}
+</button>
+
+<Link to="/" className="btn">Torna alla Home</Link>
+
+<button
+  onClick={() => toggleFavorite(destination.id)}
+  className={favoriteIds.includes(destination.id) ? "btn-click" : "btn-btn"}
+>
+  {favoriteIds.includes(destination.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}
+</button>
+
         </div>
         </div>
     )

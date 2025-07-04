@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-export default function Favorites({ favoriteIds, toggleFavorite, destinations }) {
+export default function Favorites({ favoriteIds, toggleFavorite }) {
 
     const [favoriteDestinations, setFavoriteDestinations] = useState([]);
 
@@ -15,17 +15,33 @@ export default function Favorites({ favoriteIds, toggleFavorite, destinations })
     }
 
 
-  useEffect(() => {
-    if (destinations.length > 0) {
-      const filtered = destinations.filter(d => favoriteIds.includes(d.id));
-      setFavoriteDestinations(filtered);
+ useEffect(() => {
+    async function fetchFavorites() {
+      try {
+        const data = await Promise.all(
+          favoriteIds.map(id =>
+            fetch(`http://localhost:3001/destinations/${id}`)
+              .then(res => res.json())
+              .then(data => data.destination)
+          )
+        );
+        setFavoriteDestinations(data);
+      } catch (error) {
+        console.error("Errore nel caricamento delle destinazioni preferite:", error);
+      }
     }
-  }, [favoriteIds, destinations]);
+
+    if (favoriteIds.length > 0) {
+      fetchFavorites();
+    } else {
+      setFavoriteDestinations([]);
+    }
+  }, [favoriteIds]);
 
 
 
     if (favoriteDestinations.length === 0) {
-        return <p>Nessuna Destinazione Aggiunta ai Preferiti</p>
+        return <p className="info-error">Nessuna Destinazione Aggiunta ai Preferiti!"</p>
     }
 
 
