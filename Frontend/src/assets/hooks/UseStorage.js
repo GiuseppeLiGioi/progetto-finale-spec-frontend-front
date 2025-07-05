@@ -5,6 +5,7 @@ export default function UseStorage(key, initialValue) {
     return saved ? JSON.parse(saved) : initialValue;
   });
 
+
   function setStoredValue(newValue) {
     setValue(newValue);
     localStorage.setItem(key, JSON.stringify(newValue));

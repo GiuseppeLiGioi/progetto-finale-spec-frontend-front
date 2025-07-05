@@ -12,7 +12,7 @@ import UseStorage from "./assets/hooks/UseStorage.js";
 function App() {
 
     const [destinations, setDestinations] = useState([])
-   const [selectedIds, setSelectedIds] = useState([]);
+   const [selectedIds, setSelectedIds] = UseStorage("selectedIds" ,[]);
    const [favoriteIds, setFavoriteIds] = UseStorage('favoriteIds', []);
    const [searchQuery, setSearchQuery] = useState("");
    const [showSidebar, setShowSidebar] = useState(false)

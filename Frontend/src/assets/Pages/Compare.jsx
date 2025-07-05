@@ -1,5 +1,6 @@
+import UseStorage from "../hooks/UseStorage";
 import { useState, useEffect } from "react"
-export default function Compare({ selectedIds, toggleSelect, destinations }) {
+export default function Compare({ selectedIds, toggleSelect }) {
 const [selectedDestinations, setSelectedDestinations] = useState([])
 
 
