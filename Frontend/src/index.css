@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import './assets/styles/responsive-mid.css';
+@import './assets/styles/responsive-smart.css';
 
 html,
 body {
@@ -552,3 +554,5 @@ a:hover {
   padding: 15px 25px;
   border-radius: 10px;
 }
+
+
