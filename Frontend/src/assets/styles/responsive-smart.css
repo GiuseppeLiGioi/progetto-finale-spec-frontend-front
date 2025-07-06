@@ -1,3 +1,62 @@
 @media (max-width: 480px) {
-  
+.compare-wrapper {
+  display: flex !important;
+  flex-direction: column;  
+  align-items: center;     
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.container-single-dest {
+  width: 300px;           
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+  .single-dest-compare button {
+    margin-top: 1rem;     
+    align-self: stretch;  
+  }
+
+  .fav-category,
+  .fav-price {
+    display: none;        
+  }
+
+  .fav-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .accordion-copy {
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 1.3rem;    
+    color: #c0392b;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .fav-p {
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0;
+    width: 100%;
+  }
+
+  .fav-span {
+    font-weight: 500;
+  }
+
+  @media (min-width: 1024px) {
+    .accordion-copy {
+      display: none !important;
+    }
+  }
 }

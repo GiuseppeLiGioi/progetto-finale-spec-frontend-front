@@ -554,5 +554,11 @@ a:hover {
   padding: 15px 25px;
   border-radius: 10px;
 }
+@media (min-width: 1024px) {
+  .accordion-copy {
+    display: none !important;
+  }
+}
+
 
 
