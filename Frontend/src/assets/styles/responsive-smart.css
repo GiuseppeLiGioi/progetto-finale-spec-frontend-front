@@ -59,4 +59,83 @@
       display: none !important;
     }
   }
+
+    .favorites-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .single-dest-fav {
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fef6e4;
+    justify-content: space-around;
+    border-radius: 6px;
+    width: 100%;
+    
+    padding: 10px;
+    
+   
+  }
+
+.fav-img {
+  max-width: 100%; 
+  height: auto;
+  margin-right: 50px;   
+  margin-left: 0;  
+}
+
+  .fav-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+
+  .fav-title {
+    display: none;
+    
+  }
+
+  .fav-right-info {
+    display: flex;
+    align-items: flex-end;
+    
+    gap: 10px;
+  }
+
+  .fav-category,
+  .fav-price {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    white-space: nowrap;
+  }
+
+.btn-fav {
+  margin-left: 0; 
+  width: 100%;     
+  box-sizing: border-box; 
+  padding: 8px 0;  
+}
+
+  .btn-fav:hover {
+    background-color: rgba(150, 40, 40, 0.8);
+  }
+
+  .accordion-copy-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+ .accordion-copy-wrapper h2.accordion-copy,
+.accordion-copy-wrapper h4.accordion-copy {
+  display: block; 
+}
+
 }

@@ -70,7 +70,11 @@ export default function Favorites({ favoriteIds, toggleFavorite }) {
               </div>
               {isOpen && (
                 <div className="fav-details">
+                  <div className="accordion-copy-wrapper">
+
+                  <h2 className="accordion-copy">{f.title.toUpperCase()}</h2>
                   <h4 className="accordion-copy">Categoria: <span className="fav-span">{f.category.toUpperCase()}</span></h4>
+                  </div>
 
                   <p className="fav-p"><strong>Paese:</strong> <span className="fav-span">{f.country}</span></p>
                   <p className="fav-p"><strong>Lingua Parlata:</strong> <span className="fav-span">{f.language}</span></p>

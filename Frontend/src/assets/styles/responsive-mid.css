@@ -1,60 +1,69 @@
 @media (max-width: 768px) {
-    .container-single-dest {
-        flex: 0 0 calc(50% - 20px);
-        min-width: 300px;
-    }
-
-    .compare-wrapper {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 1rem;
-
-    }
-
-    .single-dest-compare button {
-        margin-top: auto;
-        align-self: center;
-    }
-
-    .fav-category,
-    .fav-price {
-        display: none;
-    }
-
-.fav-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;     
-  padding: 15px;
-  gap: 8px;
-}
-
-.accordion-copy {
-  width: 100%;
-  font-family: 'Playfair Display', serif;
-  text-align: center;          
-  font-size: 1.5rem;
-  color: #c0392b;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.fav-p {
-  font-size: 0.95rem;
-  text-align: left;
-  margin: 0;
-  width: 100%;                
-}
-
-.fav-span {
-  font-weight: 500;
-}
-
-
-@media (min-width: 1024px) {
-  .accordion-copy {
-    display: none !important;
+  .container-single-dest {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(50% - 20px);
+    min-width: 300px;
   }
+
+  .compare-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+
+  }
+
+  .single-dest-compare button {
+    margin-top: auto;
+    align-self: center;
+  }
+
+  .fav-category,
+  .fav-price {
+    display: none;
+  }
+
+  .fav-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 8px;
+  }
+
+  .accordion-copy {
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #c0392b;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .fav-p {
+    font-size: 1rem;
+    text-align: left;
+    margin: 0;
+    width: 100%;
+  }
+
+  .fav-span {
+    font-weight: 500;
+  }
+ .accordion-copy-wrapper h2.accordion-copy {
+  display: none; 
 }
+
+.accordion-copy-wrapper h4.accordion-copy {
+  display: block;
+}
+
+
+  @media (min-width: 1024px) {
+    .accordion-copy-wrapper {
+      display: none !important;
+    }
+  }
 }
