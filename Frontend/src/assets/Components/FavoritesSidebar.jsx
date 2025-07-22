@@ -42,7 +42,7 @@ export default function FavoritesSidebar({ favoriteIds, showSidebar, setShowSide
                 <h4>{f.title}</h4>
               </div>
               <div className="btn-fav-wrapper">
-                <Link className="btn-sidebar" to={`/destination/${f.id}`}>
+                <Link className="btn-sidebar" to={`/destination/${f.id}`} onClick={() => setShowSidebar(false)}>
                   <FontAwesomeIcon icon={faEye} />
                 </Link>
                 <button className="btn-sidebar-remove" onClick={() => toggleFavorite(f.id)}>
